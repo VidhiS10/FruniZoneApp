@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">5dp</dimen>
+    <dimen name="dp1">10dp</dimen>
+    <dimen name="sp14">10dp</dimen>
+    <dimen name="sp16">10dp</dimen>
+    <dimen name="dp14">10dp</dimen>
+
+
+</resources>
