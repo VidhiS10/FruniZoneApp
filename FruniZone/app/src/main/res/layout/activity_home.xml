@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:background="#F8FCFE"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="564dp"
+        android:layout_weight="1" />
+    <com.zagori.bottomnavbar.BottomNavBar
+        android:id="@+id/bnvMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:bn_background_color="@color/nav_background"
+        app:bn_curve_margin="6dp"
+        app:bn_curve_rounded_corner_radius="8dp"
+        app:bn_curve_vertical_offset="0dp"
+        app:bn_fab_background_color="@color/nav_fab_background"
+        app:bn_fab_icon_color="@color/nav_fab_icon"
+        app:bn_fab_menu_index="2"
+        app:bn_fab_size="normal"
+        app:labelVisibilityMode="labeled"
+        app:bn_item_color="@color/nav_item"
+        app:bn_menu="@menu/menu_main"
+        />
+
+    <!--        tools:ignore="MissingClass" />-->
+</LinearLayout>
