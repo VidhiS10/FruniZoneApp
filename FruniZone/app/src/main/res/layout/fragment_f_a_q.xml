@@ -1,14 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FAQFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FAQFragment"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <include layout="@layout/header"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="3dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/grey_font"
+        app:layout_anchor="@+id/linearLayout"
+        app:layout_anchorGravity="top|center" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <!--        <TextView-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:textAlignment="center"-->
+        <!--        android:layout_marginTop="30dp"-->
+        <!--        android:textSize="50dp"-->
+        <!--        android:fontFamily="sans-serif-black"-->
+        <!--        android:text="F.A.Q"-->
+        <!--        android:textStyle="italic|bold"-->
+        <!--        android:layout_marginBottom="30dp">-->
+        <!--    </TextView>-->
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:src="@mipmap/faq"></ImageView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt1"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="10dp"
+                    android:clickable="true"
+                    android:drawableRight="@drawable/baseline_arrow_drop_down_24"
+                    android:fontFamily="@font/allerta"
+                    android:gravity="center_vertical"
+                    android:text="Question :- How can I track my order?"
+                    android:textSize="18dp"
+                    android:textStyle="italic|bold"></TextView>
+
+                <TextView
+                    android:id="@+id/txt2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:text="Answer :- Once your order is successfully placed, you can conveniently track its status directly from your account dashboard."
+                    android:textSize="15dp"
+                    android:textStyle="italic|bold"
+                    android:visibility="gone"></TextView>
+
+                <!--2 textbox-->
+
+                <TextView
+                    android:id="@+id/txt3"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:clickable="true"
+                    android:drawableRight="@drawable/baseline_arrow_drop_down_24"
+                    android:fontFamily="@font/allerta"
+                    android:gravity="center_vertical"
+                    android:text="Question :- What payment methods do you accept?"
+                    android:textSize="18dp"
+                    android:textStyle="italic|bold"></TextView>
+
+                <TextView
+                    android:id="@+id/txt4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:text="Answer :- We accept only 2 payment methods ONLINE and COD. You can choose the payment method that is most convenient for you during checkout."
+                    android:textSize="15dp"
+                    android:textStyle="italic|bold"
+                    android:visibility="gone"></TextView>
+
+                <!-- 3 textbox -->
+
+                <TextView
+                    android:id="@+id/txt5"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:clickable="true"
+                    android:drawableRight="@drawable/baseline_arrow_drop_down_24"
+                    android:fontFamily="@font/allerta"
+                    android:gravity="center_vertical"
+                    android:text="Question :- How can I place an order?"
+                    android:textSize="18dp"
+                    android:textStyle="italic|bold"></TextView>
+
+                <TextView
+                    android:id="@+id/txt6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:text="Answer :- To place an order, simply browse in our app, select the items you like, add them to your cart, and proceed to checkout. Follow the prompts to enter your shipping and payment details to complete the order."
+                    android:textSize="15dp"
+                    android:textStyle="italic|bold"
+                    android:visibility="gone"></TextView>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
