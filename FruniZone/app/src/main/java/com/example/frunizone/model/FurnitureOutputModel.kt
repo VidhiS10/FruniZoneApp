@@ -1,7 +1,9 @@
 package com.example.frunizone.model
+import com.google.gson.annotations.SerializedName
 
 data class FurnitureOutputModel(
-    var status: Boolean,
-    var message: String,
-    var subCategory: ArrayList<FurnitureModel>
+    val status: Boolean = false,
+    val message: String = "",
+    @SerializedName("sub_category")
+    val subCategory: ArrayList<FurnitureModel> = arrayListOf()
 )

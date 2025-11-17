@@ -9,6 +9,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +19,7 @@ import com.denzcoskun.imageslider.constants.AnimationTypes
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.frunizone.adapter.CategoryAdapter
+import com.example.frunizone.adapter.FurnitureAdapter
 //import com.example.furnizone.adapter.CategoryAdapter
 //import com.example.furnizone.adapter.FurnitureAdpater
 import com.example.frunizone.api.BannerApi
@@ -93,7 +95,7 @@ class HomeFragment : Fragment() {
         // API calls
         BannerApi().getBanner(this)
         CategoryApi().getCategory(this)
-        //FurnitureApi().getFurniture(this)
+        FurnitureApi().getFurniture(this)
     }
 
     // --- Banner ---
@@ -130,26 +132,81 @@ class HomeFragment : Fragment() {
         rcylCategory.adapter = categoryAdapter
     }
     /*
-        // --- Furniture ---
-        fun setFurniture(model: FurnitureOutputModel) {
-            val list = ArrayList<FurnitureModel>()
-            val subCategory = model.sub_category ?: return
-            for (i in 0 until minOf(8, subCategory.size)) {
-                list.add(subCategory[i])
+    fun setFurniture(model: FurnitureOutputModel) {
+
+        val list = ArrayList<FurnitureModel>()
+
+        // Add only 8 items safely
+        val limit = minOf(model.subCategory.size, 8)
+        for (i in 0 until limit) {
+            list.add(model.subCategory[i])
+        }
+
+        val adapter = FurnitureAdapter(requireActivity(), list,
+            object : FurnitureAdapter.ItemClickListener {
+                override fun onClick(item: FurnitureModel) {
+
+                    val bundle = Bundle().apply {
+                        putSerializable("product", item)
+                    }
+
+                    val fragment = SubCategoryFragment().apply {
+                        arguments = bundle
+                    }
+
+                    (requireActivity() as HomeActivity).openFragment(fragment)
+                }
+            })
+
+        rcylTopSelling.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        rcylTopSelling.adapter = adapter
+    }*/
+
+    fun setFurniture(model: FurnitureOutputModel) {
+
+        val list = ArrayList<FurnitureModel>()
+
+        // SAFETY CHECK – API returned null
+        val subList = model.subCategory ?: arrayListOf()
+
+        if (subList.isEmpty()) {
+            Toast.makeText(requireActivity(), "No products found", Toast.LENGTH_SHORT).show()
+            rcylTopSelling.adapter = null
+            return
+        }
+
+        val limit = minOf(subList.size, 8)
+
+        for (i in 0 until limit) {
+            list.add(subList[i])
+        }
+
+        val adapter = FurnitureAdapter(
+            requireActivity(),
+            list,
+            object : FurnitureAdapter.ItemClickListener {
+                override fun onClick(item: FurnitureModel) {
+
+                    val bundle = Bundle().apply {
+                        putSerializable("product", item)
+                    }
+
+                    val fragment = SubCategoryFragment().apply {
+                        arguments = bundle
+                    }
+
+                    (requireActivity() as HomeActivity).openFragment(fragment)
+                }
             }
+        )
 
-            val furnitureAdapter = FurnitureAdpater(requireActivity(), list) { furnitureModel ->
-                val bundle = Bundle()
-                bundle.putSerializable("product", furnitureModel)
+        rcylTopSelling.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
-                val fragment = SubCategoryFragment()
-                fragment.arguments = bundle
-                (activity as HomeActivity).openFragment(fragment)
-            }
-
-            rcylTopSelling.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            rcylTopSelling.adapter = furnitureAdapter
-        }*/
+        rcylTopSelling.adapter = adapter
+    }
 
 
     companion object {
