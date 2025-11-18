@@ -29,7 +29,7 @@ class AllProductFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private lateinit var rcylProductSeeAll: RecyclerView
-    private lateinit var toolbar: Toolbar
+//    private lateinit var toolbar: Toolbar
 
     private var param2: String? = null
 
@@ -52,12 +52,12 @@ class AllProductFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         rcylProductSeeAll = view.findViewById(R.id.rcylproductSeeAll)
-        toolbar = view.findViewById(R.id.toolbar)
+//        toolbar = view.findViewById(R.id.toolbar)
 
-        toolbar.setNavigationOnClickListener {
+       /* toolbar.setNavigationOnClickListener {
             val intent = Intent(requireActivity(), HomeActivity::class.java)
             startActivity(intent)
-        }
+        }*/
 
         FurnitureApi().getFurnitureAll(this)
     }

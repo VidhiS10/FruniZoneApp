@@ -73,28 +73,27 @@ override fun onBindViewHolder(holder: FurnitureViewHolder, position: Int) {
         .load(ConstantData.SERVER_IMAGE_ADDRESS + imagePath)
         .into(holder.proImg)
 
-//    holder.card.setOnClickListener { listener.onClick(model) }
-//    holder.image.setOnClickListener { listener.onClick(model) }
-    holder.card.setOnClickListener { listener.onClick(position, model) }
-    holder.image.setOnClickListener { listener.onClick(position, model) }
-
+    // Click listeners
+    holder.proImg.setOnClickListener { listener.onClick(position, model) }
+    holder.itemView.setOnClickListener { listener.onClick(position, model) }
 
 }
 
     override fun getItemCount(): Int = list.size
 
     class FurnitureViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//        val proImg: ImageView = itemView.findViewById(R.id.pro_img)
-//        val proName: TextView = itemView.findViewById(R.id.pro_name)
-//        val proPrice: TextView = itemView.findViewById(R.id.pro_price)
-//        val proId: TextView = itemView.findViewById(R.id.pro_id)
-
         val proImg: ImageView = itemView.findViewById(R.id.pro_img)
         val proName: TextView = itemView.findViewById(R.id.pro_name)
         val proPrice: TextView = itemView.findViewById(R.id.pro_price)
         val proId: TextView = itemView.findViewById(R.id.pro_id)
-        val card: CardView = itemView.findViewById(R.id.card)
-        val image: ImageView = itemView.findViewById(R.id.image)
+
+//
+//        val proImg: ImageView = itemView.findViewById(R.id.pro_img)
+//        val proName: TextView = itemView.findViewById(R.id.pro_name)
+//        val proPrice: TextView = itemView.findViewById(R.id.pro_price)
+//        val proId: TextView = itemView.findViewById(R.id.pro_id)
+//        val card: CardView = itemView.findViewById(R.id.card)
+//        val image: ImageView = itemView.findViewById(R.id.image)
     }
 
     interface ItemClickListener {
