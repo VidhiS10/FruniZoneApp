@@ -64,6 +64,7 @@ class HomeActivity : AppCompatActivity() {
     fun openFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.frame, fragment)
+            .addToBackStack(null)
             .commit()
     }
     @Deprecated("Deprecated in Java")
