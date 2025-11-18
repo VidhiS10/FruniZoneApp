@@ -66,7 +66,7 @@ class AllProductFragment : Fragment() {
 
         val adapter = FurnitureAdapter1(
             requireActivity(),
-            model.subCategory,
+            model.sub_category,
             object : FurnitureAdapter1.ItemClickListener {
                 override fun onClick(position: Int, item: FurnitureModel) {
 

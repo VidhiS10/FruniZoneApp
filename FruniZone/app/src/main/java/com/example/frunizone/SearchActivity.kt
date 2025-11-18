@@ -76,7 +76,7 @@ class SearchActivity : AppCompatActivity() {
 
         val furnitureAdapter = FurnitureAdapter1(
             this,
-            model.subCategory,
+            model.sub_category,
             object : FurnitureAdapter1.ItemClickListener {
                 override fun onClick(position: Int, model: FurnitureModel) {
 

@@ -137,9 +137,9 @@ class HomeFragment : Fragment() {
         val list = ArrayList<FurnitureModel>()
 
         // Add only 8 items safely
-        val limit = minOf(model.subCategory.size, 8)
+        val limit = minOf(model.sub_category.size, 8)
         for (i in 0 until limit) {
-            list.add(model.subCategory[i])
+            list.add(model.sub_category[i])
         }
 
         val adapter = FurnitureAdapter(requireActivity(), list,
@@ -169,7 +169,7 @@ class HomeFragment : Fragment() {
         val list = ArrayList<FurnitureModel>()
 
         // SAFETY CHECK – API returned null
-        val subList = model.subCategory ?: arrayListOf()
+        val subList = model.sub_category ?: arrayListOf()
 
         if (subList.isEmpty()) {
             Toast.makeText(requireActivity(), "No products found", Toast.LENGTH_SHORT).show()

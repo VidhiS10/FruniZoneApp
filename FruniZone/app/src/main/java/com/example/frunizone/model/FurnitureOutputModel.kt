@@ -5,5 +5,5 @@ data class FurnitureOutputModel(
     val status: Boolean = false,
     val message: String = "",
     @SerializedName("sub_category")
-    val subCategory: ArrayList<FurnitureModel> = arrayListOf()
+    val sub_category: ArrayList<FurnitureModel> = arrayListOf()
 )

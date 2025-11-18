@@ -2,12 +2,12 @@ package com.example.frunizone.util
 
 object ConstantData {
     //Base server address for all API calls
-    const val SERVER_ADDRESS = "http://10.203.174.147/"
+    const val SERVER_ADDRESS = "http://192.168.29.6/"
 
 
 //Base path to fetch images from server
     // http://192.168.1.39/furniture/api/prod_from_cate_api.php
-    const val SERVER_IMAGE_ADDRESS = "http://10.203.174.147/furniture/admin"
+    const val SERVER_IMAGE_ADDRESS = "http://192.168.29.6/furniture/admin"
 
     //endpoints for your API calls
     const val REGISTER_URL = "furniture/api/register.php"

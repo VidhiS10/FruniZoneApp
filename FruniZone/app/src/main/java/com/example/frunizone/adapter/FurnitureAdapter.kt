@@ -28,14 +28,14 @@ class FurnitureAdapter(
     override fun onBindViewHolder(holder: FurnitureViewHolder, position: Int) {
         val model = list[position]
 
-        holder.proName.text = model.subCatName
-        holder.proId.text = model.subCatId
-        holder.proPrice.text = model.subCatPrice
+        holder.proName.text = model.sub_cat_name
+        holder.proId.text = model.sub_cat_id
+        holder.proPrice.text = model.sub_cat_price
 
         // ----------------------------
         //   FIX: SAFE IMAGE HANDLING
         // ----------------------------
-        val rawImg = model.subCatPic1 ?: ""          // Null-safe
+        val rawImg = model.sub_cat_pic1 ?: ""          // Null-safe
 
         val finalImg = if (rawImg.startsWith("/")) { // Avoid substring crash
             rawImg.substring(1)

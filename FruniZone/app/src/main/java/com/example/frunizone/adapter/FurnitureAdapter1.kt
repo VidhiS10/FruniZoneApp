@@ -28,28 +28,28 @@ class FurnitureAdapter1(
     override fun onBindViewHolder(holder: FurnitureViewHolder, position: Int) {
         val model = list[position]
 
-        holder.proName.text = model.subCatName
+        holder.proName.text = model.sub_cat_name
 
-        holder.proId.text = model.subCatId
-        holder.proPrice.text = model.subCatPrice
+        holder.proId.text = model.sub_cat_id
+        holder.proPrice.text = model.sub_cat_price
 
         holder.proImg.setOnClickListener {
             listener.onClick(position, model)
         }
 
         Glide.with(context)
-            .load(ConstantData.SERVER_IMAGE_ADDRESS + model.subCatPic1.substring(1))
+            .load(ConstantData.SERVER_IMAGE_ADDRESS + model.sub_cat_pic1.substring(1))
             .into(holder.proImg)
     }
 
 override fun onBindViewHolder(holder: FurnitureViewHolder, position: Int) {
     val model = list[position]
 
-    holder.proName.text = model.subCatName ?: ""
-    holder.proId.text = model.subCatId ?: ""
-    holder.proPrice.text = model.subCatPrice ?: ""
+    holder.proName.text = model.sub_cat_name ?: ""
+    holder.proId.text = model.sub_cat_id ?: ""
+    holder.proPrice.text = model.sub_cat_price ?: ""
 
-    val imagePath = model.subCatPic1?.substring(1) ?: ""
+    val imagePath = model.sub_cat_pic1?.substring(1) ?: ""
 
     Glide.with(context)
         .load(ConstantData.SERVER_IMAGE_ADDRESS + imagePath)
@@ -62,12 +62,12 @@ override fun onBindViewHolder(holder: FurnitureViewHolder, position: Int) {
 override fun onBindViewHolder(holder: FurnitureViewHolder, position: Int) {
     val model = list[position]
 
-    holder.proName.text = model.subCatName ?: ""
-    holder.proId.text = model.subCatId ?: ""
-    holder.proPrice.text = model.subCatPrice ?: ""
+    holder.proName.text = model.sub_cat_name ?: ""
+    holder.proId.text = model.sub_cat_id ?: ""
+    holder.proPrice.text = model.sub_cat_price ?: ""
 
     // safe image
-    val imagePath = model.subCatPic1?.removePrefix("/") ?: ""
+    val imagePath = model.sub_cat_pic1?.removePrefix("/") ?: ""
 
     Glide.with(context)
         .load(ConstantData.SERVER_IMAGE_ADDRESS + imagePath)
