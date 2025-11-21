@@ -62,7 +62,7 @@ class OrderApi {
         queue.add(request)
     }
 
-   /* fun removeOrder(id: String, activity: Activity) {
+    fun removeOrder(id: String, activity: Activity) {
 
         val progress = ProgressDialog(activity)
         progress.setMessage("Its loading....")
@@ -93,7 +93,7 @@ class OrderApi {
         }
 
         queue.add(request)
-    }*/
+    }
 
     fun cancelOrder(id: String, activity: Activity) {
 
@@ -128,7 +128,7 @@ class OrderApi {
 
         queue.add(request)
     }
-/*
+
     fun confirmOrder(uid: String, address: String, status: String, activity: Activity) {
 
         val progress = ProgressDialog(activity)
@@ -166,9 +166,9 @@ class OrderApi {
         }
 
         queue.add(request)
-    }*/
-/*
-    fun updateOrder(id: String, qty: String, amount: String, activity: Activity) {
+    }
+
+    fun updateOrder(id: String, qty: String, amount: String?, activity: Activity) {
 
         val progress = ProgressDialog(activity)
         progress.setMessage("Its loading....")
@@ -196,7 +196,9 @@ class OrderApi {
             override fun getParams(): Map<String, String> {
                 return hashMapOf(
                     "id" to id,
-                    "amount" to amount,
+//                    "amount" to amount,
+                    "amount" to (amount ?: "0"),
+
                     "quantity" to qty
                 )
             }
@@ -237,7 +239,7 @@ class OrderApi {
 
         queue.add(request)
     }
-*/
+
     /*
     fun getOrderCompleted(uid: String, fragment: YourOrderFragment) {
 

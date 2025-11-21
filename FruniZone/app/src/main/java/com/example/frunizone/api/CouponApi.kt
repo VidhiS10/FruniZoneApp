@@ -37,7 +37,7 @@ class CouponApi {
 
         requestQueue.add(stringRequest)
     }
-/*
+
     fun getCouponDiscount(activity: CartActivity, ccode: String) {
         val progressDialog = ProgressDialog(activity)
         progressDialog.setMessage("Loading...")
@@ -70,5 +70,5 @@ class CouponApi {
         }
 
         requestQueue.add(stringRequest)
-    }*/
+    }
 }

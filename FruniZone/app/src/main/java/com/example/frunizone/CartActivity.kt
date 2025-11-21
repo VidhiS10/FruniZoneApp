@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,8 +26,8 @@ import com.razorpay.PaymentResultListener
 import org.json.JSONException
 import org.json.JSONObject
 
-class CartActivity : AppCompatActivity() {
-
+//class CartActivity : AppCompatActivity() {
+class CartActivity : AppCompatActivity(), PaymentResultListener {
     private lateinit var prod_total_amount: TextView
     private lateinit var prod_gst: TextView
     private lateinit var prod_amount: TextView
@@ -42,7 +43,7 @@ class CartActivity : AppCompatActivity() {
     private lateinit var etcode: EditText
     private lateinit var llytCart: ScrollView
     private lateinit var empty: LinearLayout
-    private lateinit var toolbar: Toolbar
+//    private lateinit var toolbar: Toolbar
 
     private lateinit var Address1: EditText
     private lateinit var Address2: EditText
@@ -65,14 +66,14 @@ class CartActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        /*initViews()
+        initViews()
 
         val sp: SharedPreferences = getSharedPreferences(ConstantData.SP_LOGIN_PREFS, MODE_PRIVATE)
         uid = sp.getString(ConstantData.KEY_ID, "0")!!
-
+/*
         toolbar.setNavigationOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
-        }
+        }*/
 
         btnshop.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
@@ -114,19 +115,39 @@ class CartActivity : AppCompatActivity() {
         llytCart = findViewById(R.id.llytCart)
         empty = findViewById(R.id.empty)
         btnshop = findViewById(R.id.btnshop)
-        toolbar = findViewById(R.id.toolbar)
+//        toolbar = findViewById(R.id.toolbar)
         back = findViewById(R.id.back)
     }
 
-    fun calculateAmount(model: CouponOutputModel) {
-        if (model.coupen.isNotEmpty()) {
-            val discount = model.coupen[0].coupen_discount.toDouble()
+   /* fun calculateAmount(model: CouponOutputModel) {
+//        if (model.coupen.isNotEmpty()) {
+        if (!model.coupen.isNullOrEmpty()) {
+
+            val discount = model.coupen[0].coupen_discount?.toDouble()
             tvcopoun.text = "${discount.toInt()}%"
             val calc = tot * (discount / 100)
             val finalAmt = tot - calc
             prod_total_amount.text = Math.floor(finalAmt).toString()
         }
-    }
+    }*/
+   fun calculateAmount(model: CouponOutputModel) {
+
+       val list = model.coupen ?: return   // if null → exit function
+
+       if (list.isNotEmpty()) {
+
+           // Convert discount safely
+           val discount = list[0].coupen_discount?.toDoubleOrNull() ?: 0.0
+
+           tvcopoun.text = "${discount.toInt()}%"
+
+           val calc = tot * (discount / 100)
+           val finalAmt = tot - calc
+
+           prod_total_amount.text = Math.floor(finalAmt).toString()
+       }
+   }
+
 
     private fun openDialog() {
         bottomSheetDialog = BottomSheetDialog(this)
@@ -161,7 +182,7 @@ class CartActivity : AppCompatActivity() {
         bottomSheetDialog.setContentView(view)
     }
 
-    fun setCart(orderModel: OrderOutputModel) {
+    public fun setCart(orderModel: OrderOutputModel) {
         if (orderModel.order.isEmpty()) {
             llytCart.visibility = View.GONE
             empty.visibility = View.VISIBLE
@@ -171,7 +192,10 @@ class CartActivity : AppCompatActivity() {
 
             amt = 0.0
             for (item in orderModel.order) {
-                amt += item.total_amount.toDouble()
+//                amt += item.totalAmount.toDouble()
+//                amt += item.totalAmount.toDoubleOrNull() ?: 0.0
+                amt += (item.totalAmount?.toDoubleOrNull() ?: 0.0)
+
             }
 
             tot = amt + amt * 0.18
@@ -203,7 +227,7 @@ class CartActivity : AppCompatActivity() {
         }
     }
 
-    private fun getCartData() {
+    public fun getCartData() {
         if (uid != "0") {
             OrderApi().getOrderPending(uid, this)
         }
@@ -242,6 +266,5 @@ class CartActivity : AppCompatActivity() {
 
     fun done() {
         startActivity(Intent(this, HurrayActivity::class.java))
-    }*/
     }
 }

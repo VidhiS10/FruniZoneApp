@@ -33,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
         }
         val sharedPref = getSharedPreferences(ConstantData.SP_LOGIN_PREFS, MODE_PRIVATE)
         val username = sharedPref.getString(ConstantData.KEY_USERNAME, "User")
-        Toast.makeText(this, "Welcome, $username!", Toast.LENGTH_LONG).show()
+//        Toast.makeText(this, "Welcome, $username!", Toast.LENGTH_LONG).show()
 
         bnvMain = findViewById(R.id.bnvMain)
         openFragment(HomeFragment())
