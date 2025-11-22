@@ -51,10 +51,10 @@ class OrderApi {
                 map["date"] = model.date
                 map["time"] = model.time
                 map["amount"] = model.amount
-                map["total_amount"] = model.totalAmount
+                map["total_amount"] = model.total_amount
                 map["quantity"] = model.quantity + "1"
                 map["status"] = model.status
-                map["is_wishlist"] = model.isWishlist
+                map["is_wishlist"] = model.is_wishlist
                 return map
             }
         }
@@ -221,7 +221,7 @@ class OrderApi {
             { response ->
                 progress.dismiss()
                 val output = Gson().fromJson(response, OrderOutputModel::class.java)
-                Toast.makeText(activity, output.message, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, output.message, Toast.LENGTH_SHORT).show()
 
                 if (output.status) {
                     (activity as CartActivity).setCart(output)

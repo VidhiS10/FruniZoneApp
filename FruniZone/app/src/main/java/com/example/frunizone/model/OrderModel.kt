@@ -7,11 +7,11 @@ data class OrderModel(
     var pname: String,
     var ppic: String,
     var amount: String,
-    var totalAmount: String,
+    var total_amount: String,
     var status: String,
     var quantity: String,
     var date: String,
     var time: String,
-    var isWishlist: String,
+    var is_wishlist: String,
     var state: String
 )

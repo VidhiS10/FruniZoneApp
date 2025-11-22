@@ -34,7 +34,7 @@ class CartAdapter(
         holder.tvCartName.text = orderModel.pname
         holder.qty.text = orderModel.quantity
         holder.tvCartPrice.text = orderModel.amount
-        holder.tvTotal.text = orderModel.totalAmount
+        holder.tvTotal.text = orderModel.total_amount
 
         Glide.with(context)
             .load(ConstantData.SERVER_IMAGE_ADDRESS + orderModel.ppic)
@@ -56,7 +56,7 @@ class CartAdapter(
                 orderModel.quantity = count.toString()
 
                 val total = count * orderModel.amount.toDouble()
-                orderModel.totalAmount = total.toString()
+                orderModel.total_amount = total.toString()
 
                 holder.tvTotal.text = total.toString()
                 holder.qty.text = count.toString()
@@ -76,7 +76,7 @@ class CartAdapter(
                 orderModel.quantity = count.toString()
 
                 val total = count * orderModel.amount.toDouble()
-                orderModel.totalAmount = total.toString()
+                orderModel.total_amount = total.toString()
 
                 holder.tvTotal.text = total.toString()
                 holder.qty.text = count.toString()

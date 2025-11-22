@@ -194,7 +194,7 @@ class CartActivity : AppCompatActivity(), PaymentResultListener {
             for (item in orderModel.order) {
 //                amt += item.totalAmount.toDouble()
 //                amt += item.totalAmount.toDoubleOrNull() ?: 0.0
-                amt += (item.totalAmount?.toDoubleOrNull() ?: 0.0)
+                amt += (item.total_amount?.toDoubleOrNull() ?: 0.0)
 
             }
 
