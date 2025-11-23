@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,6 +37,18 @@ class ContactUsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_contact_us, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val back = view.findViewById<ImageView>(R.id.ivBack)
+        val title = view.findViewById<TextView>(R.id.tvTitle)
+
+        title.text = "ContactUs"
+
+        back.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
     }
 
     companion object {

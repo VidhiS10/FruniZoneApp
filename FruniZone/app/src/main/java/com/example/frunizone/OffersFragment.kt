@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -58,6 +60,14 @@ class OffersFragment : Fragment() {
             val intent = Intent(activity, HomeActivity::class.java)
             startActivity(intent)
         }*/
+        val back = view.findViewById<ImageView>(R.id.ivBack)
+        val title = view.findViewById<TextView>(R.id.tvTitle)
+
+        title.text = "Coupens"
+
+        back.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
 
         CouponApi().getCoupon(this)
     }

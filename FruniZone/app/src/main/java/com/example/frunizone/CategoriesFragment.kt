@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import com.example.frunizone.adapter.CategoryAdapter
 import com.example.frunizone.api.CategoryApi
@@ -51,7 +53,14 @@ class CategoriesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val back = view.findViewById<ImageView>(R.id.ivBack)
+        val title = view.findViewById<TextView>(R.id.tvTitle)
 
+        title.text = "Categories"
+
+        back.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
         rcylDisplayCategory = view.findViewById(R.id.rcylDisplayCategory)
         // toolbar = view.findViewById(R.id.toolbar)
 

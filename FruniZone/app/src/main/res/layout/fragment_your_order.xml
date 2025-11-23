@@ -6,8 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".YourOrderFragment">
-
-    <include layout="@layout/header"/>
+    <include layout="@layout/layout_page_title"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

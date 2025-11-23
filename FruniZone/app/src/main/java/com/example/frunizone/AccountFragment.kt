@@ -138,7 +138,7 @@ class AccountFragment : Fragment() {
         aboutus.setOnClickListener {
 //            Toast.makeText(requireContext(), "about us", Toast.LENGTH_SHORT).show()
 
-            (activity as? HomeActivity)?.openFragment(AboutUsFragment())
+            (activity as? HomeActivity)?.openFragment(AddAddressFragment())
         }
 
         logout.setOnClickListener {

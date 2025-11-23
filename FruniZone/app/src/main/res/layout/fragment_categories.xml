@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".CategoriesFragment">
 
-    <include layout="@layout/header"/>
+    <include layout="@layout/layout_page_title"/>
     <!-- Divider -->
     <View
         android:layout_width="match_parent"

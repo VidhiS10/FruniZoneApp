@@ -66,7 +66,17 @@ class CartActivity : AppCompatActivity(), PaymentResultListener {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val back = findViewById<ImageView>(R.id.ivBack)
+        val title = findViewById<TextView>(R.id.tvTitle)
+
+        title.text = "Shopping Bag"
+
+        back.setOnClickListener {
+            onBackPressed()
+        }
         initViews()
+        updateSteps(1)
+
 
         val sp: SharedPreferences = getSharedPreferences(ConstantData.SP_LOGIN_PREFS, MODE_PRIVATE)
         uid = sp.getString(ConstantData.KEY_ID, "0")!!
@@ -88,10 +98,10 @@ class CartActivity : AppCompatActivity(), PaymentResultListener {
                 CouponApi().getCouponDiscount(this, code)
             }
         }
-
-        back.setOnClickListener {
-            startActivity(Intent(this, HomeActivity::class.java))
-        }
+//
+//        back.setOnClickListener {
+//            startActivity(Intent(this, HomeActivity::class.java))
+//        }
 
         openDialog()
 
@@ -101,6 +111,30 @@ class CartActivity : AppCompatActivity(), PaymentResultListener {
 
         getCartData()
     }
+     fun updateSteps(step: Int) {
+        val bag = findViewById<View>(R.id.stepBagCircle)
+        val address = findViewById<View>(R.id.stepAddressCircle)
+        val payment = findViewById<View>(R.id.stepPaymentCircle)
+
+        when (step) {
+            1 -> {
+                bag.setBackgroundResource(R.drawable.progress_selected_circle)
+                address.setBackgroundResource(R.drawable.progress_unselected_circle)
+                payment.setBackgroundResource(R.drawable.progress_unselected_circle)
+            }
+            2 -> {
+                bag.setBackgroundResource(R.drawable.progress_selected_circle)
+                address.setBackgroundResource(R.drawable.progress_selected_circle)
+                payment.setBackgroundResource(R.drawable.progress_unselected_circle)
+            }
+            3 -> {
+                bag.setBackgroundResource(R.drawable.progress_selected_circle)
+                address.setBackgroundResource(R.drawable.progress_selected_circle)
+                payment.setBackgroundResource(R.drawable.progress_selected_circle)
+            }
+        }
+    }
+
     private fun initViews() {
         prod_total_amount = findViewById(R.id.prod_total_amount)
         prod_gst = findViewById(R.id.prod_gst)
@@ -116,7 +150,7 @@ class CartActivity : AppCompatActivity(), PaymentResultListener {
         empty = findViewById(R.id.empty)
         btnshop = findViewById(R.id.btnshop)
 //        toolbar = findViewById(R.id.toolbar)
-        back = findViewById(R.id.back)
+//        back = findViewById(R.id.back)
     }
 
    /* fun calculateAmount(model: CouponOutputModel) {

@@ -7,7 +7,7 @@
     tools:context=".FAQFragment"
     android:orientation="vertical">
 
-    <include layout="@layout/header"/>
+    <include layout="@layout/layout_page_title"/>
 
     <View
         android:layout_width="match_parent"
