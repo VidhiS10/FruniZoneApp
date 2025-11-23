@@ -208,11 +208,11 @@ class CartActivity : AppCompatActivity(), PaymentResultListener {
                 orderModel.order,
                 object : CartAdapter.OnClickListener {
                     override fun onClickPlus(om: OrderModel) {
-                        OrderApi().updateOrder(om.id, om.quantity, om.amount, this@CartActivity)
+                        OrderApi().updateOrder(om.id, om.quantity, prod_total_amount.text.toString(), this@CartActivity)
                     }
 
                     override fun onClickMinus(om: OrderModel) {
-                        OrderApi().updateOrder(om.id, om.quantity, om.amount, this@CartActivity)
+                        OrderApi().updateOrder(om.id, om.quantity, prod_total_amount.text.toString(), this@CartActivity)
                     }
 
                     override fun removeClick(om: OrderModel) {
