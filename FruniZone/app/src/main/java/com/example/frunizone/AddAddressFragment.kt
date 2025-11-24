@@ -1,5 +1,7 @@
 package com.example.frunizone
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,6 +19,9 @@ import com.android.volley.Request
 import javax.security.auth.callback.Callback
 import com.android.volley.toolbox.Volley
 import com.android.volley.toolbox.StringRequest
+import com.example.frunizone.api.AddressApi
+import com.example.frunizone.model.AddressModel
+import com.example.frunizone.util.ConstantData
 import org.json.JSONArray
 
 
@@ -76,7 +81,7 @@ class AddAddressFragment : Fragment() {
             requireActivity().onBackPressed()
         }
 
-        (requireActivity() as? CartActivity)?.updateSteps(2)
+//        (requireActivity() as? CartActivity)?.updateSteps(2)
         etFullName = view.findViewById(R.id.etFullName)
         etPhone = view.findViewById(R.id.etPhone)
         etPincode = view.findViewById(R.id.etPincode)
@@ -87,7 +92,20 @@ class AddAddressFragment : Fragment() {
         etState = view.findViewById(R.id.etState)
         rgAddressType = view.findViewById(R.id.rgAddressType)
         chkDefault = view.findViewById(R.id.chkDefault)
-        btnSave = view.findViewById(R.id.btnSaveAddress)
+        btnSave = view.findViewById(R.id.btnAdsSave)
+
+
+
+        val sp = requireActivity().getSharedPreferences(ConstantData.SP_LOGIN_PREFS, Context.MODE_PRIVATE)
+        val savedName = sp.getString(ConstantData.KEY_USERNAME, "")
+        val savedPhone = sp.getString(ConstantData.KEY_PHONE, "")
+//        Toast.makeText(requireContext(), "name:"+savedName+"phone"+savedPhone, Toast.LENGTH_SHORT).show()
+
+       val userId = sp.getString(ConstantData.KEY_ID, "") ?: ""
+        Toast.makeText(requireContext(), "User"+ userId, Toast.LENGTH_SHORT).show()
+
+        etFullName.setText(savedName)
+        etPhone.setText(savedPhone)
 
         btnSave.setOnClickListener {
             saveAddress()
@@ -103,26 +121,105 @@ class AddAddressFragment : Fragment() {
 
     }
     private fun saveAddress() {
+
+        // ---- VALIDATION ---- //
+
+        if (etFullName.text.isNullOrEmpty()) {
+            etFullName.error = "Enter full name"
+            etFullName.requestFocus()
+            return
+        }
+
+        if (etPhone.text.isNullOrEmpty() || etPhone.text.length != 10) {
+            etPhone.error = "Enter valid 10-digit phone"
+            etPhone.requestFocus()
+            return
+        }
+
+        if (etPincode.text.isNullOrEmpty() || etPincode.text.length != 6) {
+            etPincode.error = "Enter valid 6-digit pincode"
+            etPincode.requestFocus()
+            return
+        }
+
+        if (etHouseNo.text.isNullOrEmpty()) {
+            etHouseNo.error = "Enter house number"
+            etHouseNo.requestFocus()
+            return
+        }
+
+        if (etArea.text.isNullOrEmpty()) {
+            etArea.error = "Enter area"
+            etArea.requestFocus()
+            return
+        }
+
+        if (etLandmark.text.isNullOrEmpty()) {
+            etLandmark.error = "Enter landmark"
+            etLandmark.requestFocus()
+            return
+        }
+
+        if (etCity.text.isNullOrEmpty()) {
+            etCity.error = "Enter city"
+            etCity.requestFocus()
+            return
+        }
+
+        if (etState.text.isNullOrEmpty()) {
+            etState.error = "Enter state"
+            etState.requestFocus()
+            return
+        }
+
+        if (rgAddressType.checkedRadioButtonId == -1) {
+            Toast.makeText(requireContext(), "Select address type", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // ---- GET ADDRESS TYPE ---- //
         val selectedType = when (rgAddressType.checkedRadioButtonId) {
             R.id.rbWork -> "Work"
             R.id.rbOther -> "Other"
             else -> "Home"
         }
 
-        val data = HashMap<String, String>()
-        data["full_name"] = etFullName.text.toString()
-        data["phone"] = etPhone.text.toString()
-        data["pincode"] = etPincode.text.toString()
-        data["house_no"] = etHouseNo.text.toString()
-        data["area"] = etArea.text.toString()
-        data["landmark"] = etLandmark.text.toString()
-        data["city"] = etCity.text.toString()
-        data["state"] = etState.text.toString()
-        data["address_type"] = selectedType
-        data["is_default"] = if (chkDefault.isChecked) "1" else "0"
+        // ---- GET USER ID ---- //
 
-        // TODO: Send to API with Retrofit/Volley
-        Toast.makeText(requireContext(), "Saving...", Toast.LENGTH_SHORT).show()
+        val sp = requireActivity().getSharedPreferences(ConstantData.SP_LOGIN_PREFS, Context.MODE_PRIVATE)
+        val userId = sp.getString(ConstantData.KEY_ID, "") ?: ""
+        Toast.makeText(requireContext(), "User"+ userId, Toast.LENGTH_SHORT).show()
+
+
+        if (userId.isEmpty()) {
+            Toast.makeText(requireContext(), "User not logged in", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // ---- CREATE MODEL ---- //
+        val model = AddressModel(
+            user_id = userId,
+            full_name = etFullName.text.toString().trim(),
+            phone = etPhone.text.toString().trim(),
+            house_no = etHouseNo.text.toString().trim(),
+            area = etArea.text.toString().trim(),
+            landmark = etLandmark.text.toString().trim(),
+            city = etCity.text.toString().trim(),
+            state = etState.text.toString().trim(),
+            pincode = etPincode.text.toString().trim(),
+            address_type = selectedType,
+            is_default = if (chkDefault.isChecked) "1" else "0"
+        )
+
+        // ---- CALL API ---- //
+        AddressApi().addAddress(model, requireActivity()) { success ->
+            if (success) {
+                Toast.makeText(requireContext(), "Address Saved Successfully!", Toast.LENGTH_SHORT).show()
+                requireActivity().onBackPressed()
+            } else {
+                Toast.makeText(requireContext(), "Failed to save address!", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
 

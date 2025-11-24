@@ -28,6 +28,13 @@ object ConstantData {
     const val CANCLE_ORDER = "furniture/api/cancel_order_api.php"
     const val SEARCH_API = "furniture/api/searchApi.php"
     const val UPDATE_PROFILE_URL = "furniture/api/update_profile.php"
+    const val ADDRESS_ADD = "furniture/api/address_add.php"
+    const val ADDRESS_GET = "furniture/api/address_get.php"
+    const val ADDRESS_UPDATE = "furniture/api/address_update.php"
+    const val ADDRESS_DELETE = "furniture/api/address_delete.php"
+    const val ADDRESS_GET_SINGLE = "furniture/api/address_get_single.php"
+    const val ADDRESS_SET_DEFAULT = "furniture/api/address_set_default.php"
+
 
 
 
