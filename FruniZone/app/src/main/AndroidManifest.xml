@@ -13,6 +13,9 @@
         android:theme="@style/Theme.FruniZone"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".AddressActivity"
+            android:exported="false" />
+        <activity
             android:name=".SelectPaymentActivity"
             android:exported="false" />
         <activity

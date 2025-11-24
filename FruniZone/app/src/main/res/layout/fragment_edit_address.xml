@@ -78,46 +78,46 @@
                     android:textColor="@color/black"
                     />
 
-        <EditText
-            android:id="@+id/etHouseNo"
-            android:hint="House No / Flat No*"
-            android:textSize="14sp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/ads_edit_tv"
-            android:paddingHorizontal="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+                <EditText
+                    android:id="@+id/etHouseNo"
+                    android:hint="House No / Flat No*"
+                    android:textSize="14sp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/ads_edit_tv"
+                    android:paddingHorizontal="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-        <EditText
-            android:id="@+id/etArea"
-            android:hint="Area / Street*"
-            android:textSize="14sp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/ads_edit_tv"
-            android:paddingHorizontal="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+                <EditText
+                    android:id="@+id/etArea"
+                    android:hint="Area / Street*"
+                    android:textSize="14sp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/ads_edit_tv"
+                    android:paddingHorizontal="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-        <EditText
-            android:id="@+id/etLandmark"
-            android:textSize="14sp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/ads_edit_tv"
-            android:paddingHorizontal="20dp"
-            android:hint="Landmark*"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+                <EditText
+                    android:id="@+id/etLandmark"
+                    android:textSize="14sp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/ads_edit_tv"
+                    android:paddingHorizontal="20dp"
+                    android:hint="Landmark*"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-        <EditText
-            android:id="@+id/etPincode"
-            android:hint="Pincode*"
-            android:textSize="14sp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/ads_edit_tv"
-            android:paddingHorizontal="20dp"
-            android:inputType="number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+                <EditText
+                    android:id="@+id/etPincode"
+                    android:hint="Pincode*"
+                    android:textSize="14sp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/ads_edit_tv"
+                    android:paddingHorizontal="20dp"
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -174,43 +174,43 @@
                     android:textColor="@color/black"
                     />
 
-        <!-- Address type: Home / Work / Other -->
-        <RadioGroup
-            android:id="@+id/rgAddressType"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <!-- Address type: Home / Work / Other -->
+                <RadioGroup
+                    android:id="@+id/rgAddressType"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <RadioButton
-                android:id="@+id/rbHome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Home"
-                android:textSize="14sp"
-                android:background="@drawable/ads_edit_tv"
-                android:paddingRight="20dp"
-                android:layout_marginRight="10dp"
-                android:checked="true"/>
+                    <RadioButton
+                        android:id="@+id/rbHome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Home"
+                        android:textSize="14sp"
+                        android:background="@drawable/ads_edit_tv"
+                        android:paddingRight="20dp"
+                        android:layout_marginRight="10dp"
+                        android:checked="true"/>
 
-            <RadioButton
-                android:id="@+id/rbWork"
-                android:textSize="14sp"
-                android:paddingRight="20dp"
-                android:background="@drawable/ads_edit_tv"
-                android:layout_width="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_height="wrap_content"
-                android:text="Work"/>
+                    <RadioButton
+                        android:id="@+id/rbWork"
+                        android:textSize="14sp"
+                        android:paddingRight="20dp"
+                        android:background="@drawable/ads_edit_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_height="wrap_content"
+                        android:text="Work"/>
 
-            <RadioButton
-                android:id="@+id/rbOther"
-                android:textSize="14sp"
-                android:paddingRight="20dp"
-                android:background="@drawable/ads_edit_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Other"/>
-        </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rbOther"
+                        android:textSize="14sp"
+                        android:paddingRight="20dp"
+                        android:background="@drawable/ads_edit_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Other"/>
+                </RadioGroup>
 
                 <!-- Default address -->
                 <CheckBox
@@ -226,27 +226,40 @@
 
             </LinearLayout>
         </LinearLayout>
-</ScrollView>
+    </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:paddingVertical="10dp"
         android:background="@drawable/box"
-        android:orientation="vertical">
+        android:orientation="horizontal">
         <!-- CONTINUE BUTTON AT BOTTOM -->
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_weight=".03"
             android:layout_gravity="center"
-            android:text="Save Address"
+            android:text="Cancel"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            app:backgroundTint="@null"
+            android:textColor="#8b6e5c"
+            android:background="@drawable/edit_btn_white"
+            android:id="@+id/btnCancel"/>
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight=".03"
+            android:layout_gravity="center"
+            android:text="Save"
             android:textStyle="bold"
             android:textSize="20dp"
             app:backgroundTint="@null"
             android:textColor="@color/white"
             android:background="@drawable/edit_btn"
-            android:id="@+id/btnAdsSave"/>
+            android:id="@+id/btnSave"/>
+
     </LinearLayout>
 </LinearLayout>
