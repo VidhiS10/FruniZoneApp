@@ -102,7 +102,7 @@ class AddAddressFragment : Fragment() {
 //        Toast.makeText(requireContext(), "name:"+savedName+"phone"+savedPhone, Toast.LENGTH_SHORT).show()
 
        val userId = sp.getString(ConstantData.KEY_ID, "") ?: ""
-        Toast.makeText(requireContext(), "User"+ userId, Toast.LENGTH_SHORT).show()
+//        Toast.makeText(requireContext(), "User"+ userId, Toast.LENGTH_SHORT).show()
 
         etFullName.setText(savedName)
         etPhone.setText(savedPhone)

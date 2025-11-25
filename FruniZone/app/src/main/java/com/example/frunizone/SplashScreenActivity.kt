@@ -42,7 +42,7 @@ class SplashScreenActivity : AppCompatActivity() {
                 setMediaItem(MediaItem.fromUri(uri))
                 prepare()
                 playWhenReady = true
-                repeatMode = Player.REPEAT_MODE_ALL
+//                repeatMode = Player.REPEAT_MODE_ALL
             }
         }
 
@@ -54,7 +54,7 @@ class SplashScreenActivity : AppCompatActivity() {
                 if (isLoggedIn) HomeActivity::class.java else LoginActivity::class.java
             ))
             finish()
-        }, 3500)
+        }, 3000)
     }
 
     override fun onDestroy() {

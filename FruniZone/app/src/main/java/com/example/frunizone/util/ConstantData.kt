@@ -34,7 +34,7 @@ object ConstantData {
     const val ADDRESS_DELETE = "furniture/api/address_delete.php"
     const val ADDRESS_GET_SINGLE = "furniture/api/address_get_single.php"
     const val ADDRESS_SET_DEFAULT = "furniture/api/address_set_default.php"
-
+    const val ADDRESS_GET_DEFAULT = "furniture/api/address_get_default.php"
 
 
 

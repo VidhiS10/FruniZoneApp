@@ -34,8 +34,8 @@ class CartActivity : AppCompatActivity(), PaymentResultListener {
     private lateinit var back: TextView
     private lateinit var tvcopoun: TextView
     private lateinit var rcyl_cart: RecyclerView
-    private lateinit var RadioCOD: RadioButton
-    private lateinit var RadioOnline: RadioButton
+//    private lateinit var RadioCOD: RadioButton
+//    private lateinit var RadioOnline: RadioButton
     private lateinit var btnConfirm: Button
     private lateinit var btnContinue: Button
     private lateinit var btnApply: Button
@@ -105,9 +105,24 @@ class CartActivity : AppCompatActivity(), PaymentResultListener {
 
         openDialog()
 
+//        btnContinue.setOnClickListener {
+//            bottomSheetDialog.show()
+//        }
         btnContinue.setOnClickListener {
-            bottomSheetDialog.show()
+
+            val intent = Intent(this, AddressActivity::class.java)
+
+            intent.putExtra("TOTAL_AMOUNT", prod_total_amount.text.toString())
+            intent.putExtra("GST", prod_gst.text.toString())
+            intent.putExtra("ITEM_AMOUNT", prod_amount.text.toString())
+
+            intent.putExtra("Coupen", tvcopoun.text.toString())
+
+
+
+            startActivity(intent)
         }
+
 
         getCartData()
     }
@@ -140,8 +155,8 @@ class CartActivity : AppCompatActivity(), PaymentResultListener {
         prod_gst = findViewById(R.id.prod_gst)
         prod_amount = findViewById(R.id.prod_amount)
         rcyl_cart = findViewById(R.id.rcyl_cart)
-        RadioCOD = findViewById(R.id.RadioCOD)
-        RadioOnline = findViewById(R.id.RadioOnline)
+//        RadioCOD = findViewById(R.id.RadioCOD)
+//        RadioOnline = findViewById(R.id.RadioOnline)
         btnContinue = findViewById(R.id.btnContinue)
         etcode = findViewById(R.id.etcode)
         btnApply = findViewById(R.id.btnApply)
@@ -192,7 +207,7 @@ class CartActivity : AppCompatActivity(), PaymentResultListener {
         pincode = view.findViewById(R.id.pincode)
         btnConfirm = view.findViewById(R.id.btnConfirm)
 
-        btnConfirm.setOnClickListener {
+       /* btnConfirm.setOnClickListener {
             val ad1 = Address1.text.toString().trim()
             val ad2 = Address2.text.toString().trim()
             val pin = pincode.text.toString().trim()
@@ -204,14 +219,14 @@ class CartActivity : AppCompatActivity(), PaymentResultListener {
                 else -> {
                     Address = ad1 + ad2 + pin
 
-                    if (RadioCOD.isChecked) {
+                   /* if (RadioCOD.isChecked) {
                         OrderApi().confirmOrder(uid, Address, "1", this)
                     } else {
                         makePayment()
-                    }
+                    }*/
                 }
             }
-        }
+        }*/
 
         bottomSheetDialog.setContentView(view)
     }

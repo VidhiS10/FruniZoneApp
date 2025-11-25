@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <!-- Header -->
+    <include layout="@layout/layout_page_title" />
+
+    <!-- Scrollable page content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_checkout_progress"/>
+
+            <!-- ADDRESS CARD -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_box"
+                android:padding="16dp"
+                android:orientation="vertical">
+
+                <!-- ROW 1 : NAME + BADGES + CHANGE -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    <LinearLayout
+                        android:layout_width="262dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Full Name"
+                            android:paddingVertical="4dp"
+                            android:textSize="16sp"
+                            android:textColor="#000000"
+                            android:textStyle="bold" />
+
+                        <!-- BADGES GROUP -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginStart="8dp">
+
+                            <TextView
+                                android:id="@+id/tvDefault"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="( Default )"
+                                android:textSize="12sp"
+                                android:textColor="@color/grey_font"
+                                android:padding="6dp"
+                                android:layout_marginEnd="6dp" />
+
+                            <TextView
+                                android:id="@+id/tvHome"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Type"
+                                android:textSize="12sp"
+                                app:backgroundTint="@null"
+                                app:rippleColor="@android:color/transparent"
+                                android:textColor="#1976D2"
+                                android:padding="6dp"
+                                android:background="@drawable/badge_blue" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- CHANGE BUTTON (Right Side)
+                    <TextView
+                        android:id="@+id/tvChange"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="Change"
+                        android:textColor="#FF3B6A"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />-->
+                    <Button
+                        android:id="@+id/btnChange"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:paddingVertical="4dp"
+                        android:paddingHorizontal="15dp"
+                        app:backgroundTint="@null"
+                        app:rippleColor="@android:color/transparent"
+                        android:background="@drawable/border_pink"
+                        android:text="Change"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="#FF3B6A" />
+                </LinearLayout>
+
+                <!-- ADDRESS TEXT -->
+                <TextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Full address here..."
+                    android:textSize="14sp"
+                    android:textColor="#444444" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Mobile:"
+                        android:textSize="14sp"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/tvMobile"
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="0000000000"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000" />
+                </LinearLayout>
+                <!-- MOBILE -->
+
+
+            </LinearLayout>
+
+            <!-- DELIVERY ESTIMATES TITLE -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="DELIVERY ESTIMATES"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <!-- DELIVERY ESTIMATES BOX -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/rounded_box"
+                android:padding="12dp"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/ivProduct"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/placeholder" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Estimated delivery by "
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:gravity="center_vertical" />
+                <TextView
+                    android:id="@+id/tvEstimatedDelivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="27 Nov 2025"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:paddingVertical="10dp"
+        android:background="@drawable/box"
+        android:orientation="vertical">
+        <!-- CONTINUE BUTTON AT BOTTOM -->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight=".03"
+            android:layout_gravity="center"
+            android:text="Continue"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            app:backgroundTint="@null"
+            android:textColor="@color/white"
+            android:background="@drawable/edit_btn"
+            android:id="@+id/btnContinue"/>
+    </LinearLayout>
+
+
+</LinearLayout>
