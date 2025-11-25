@@ -240,7 +240,7 @@ class OrderApi {
         queue.add(request)
     }
 
-    /*
+
     fun getOrderCompleted(uid: String, fragment: YourOrderFragment) {
 
         val activity = fragment.requireActivity()
@@ -274,5 +274,5 @@ class OrderApi {
         }
 
         queue.add(request)
-    }*/
+    }
 }
