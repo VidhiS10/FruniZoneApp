@@ -12,6 +12,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.frunizone.CartActivity
 import com.example.frunizone.HomeActivity
+import com.example.frunizone.HurrayActivity
 import com.example.frunizone.YourOrderFragment
 import com.example.frunizone.model.OrderModel
 import com.example.frunizone.model.OrderOutputModel
@@ -126,14 +127,54 @@ class OrderApi {
             }
         }
 
+
         queue.add(request)
     }
+
+//    fun confirmOrder(uid: String, address: String, status: String, activity: Activity) {
+//
+//        val progress = ProgressDialog(activity)
+//        progress.setMessage("Its loading....")
+//        progress.setTitle("Fetching Data")
+//        progress.show()
+//
+//        val url = ConstantData.SERVER_ADDRESS + ConstantData.CONFIRM_ORDER
+//        val queue = Volley.newRequestQueue(activity)
+//
+//        val request = object : StringRequest(Request.Method.POST, url,
+//            { response ->
+//                progress.dismiss()
+//                val output = Gson().fromJson(response, OrderOutputModel::class.java)
+//                Toast.makeText(activity, output.message, Toast.LENGTH_SHORT).show()
+//
+//                if (output.status) {
+//                    val cart = activity as CartActivity
+//                    cart.getCartData()
+//                    cart.done()
+//                }
+//            },
+//            { error ->
+//                progress.dismiss()
+//                Toast.makeText(activity, "Error: ${error.localizedMessage}", Toast.LENGTH_SHORT).show()
+//            }) {
+//
+//            override fun getParams(): Map<String, String> {
+//                val map = HashMap<String, String>()
+//                map["uid"] = uid
+//                map["address"] = address
+//                map["status"] = status
+//                return map
+//            }
+//        }
+//
+//        queue.add(request)
+//    }
 
     fun confirmOrder(uid: String, address: String, status: String, activity: Activity) {
 
         val progress = ProgressDialog(activity)
         progress.setMessage("Its loading....")
-        progress.setTitle("Fetching Data")
+        progress.setTitle("Placing Order")
         progress.show()
 
         val url = ConstantData.SERVER_ADDRESS + ConstantData.CONFIRM_ORDER
@@ -146,9 +187,8 @@ class OrderApi {
                 Toast.makeText(activity, output.message, Toast.LENGTH_SHORT).show()
 
                 if (output.status) {
-                    val cart = activity as CartActivity
-                    cart.getCartData()
-                    cart.done()
+                    activity.startActivity(Intent(activity, HurrayActivity::class.java))
+                    activity.finish()
                 }
             },
             { error ->
@@ -157,11 +197,11 @@ class OrderApi {
             }) {
 
             override fun getParams(): Map<String, String> {
-                val map = HashMap<String, String>()
-                map["uid"] = uid
-                map["address"] = address
-                map["status"] = status
-                return map
+                return hashMapOf(
+                    "uid" to uid,
+                    "address" to address,
+                    "status" to status
+                )
             }
         }
 

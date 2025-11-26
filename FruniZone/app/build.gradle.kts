@@ -60,7 +60,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61")
     implementation("io.github.zagori:bottomnavbar:1.0.3")
     implementation("com.google.android.exoplayer:exoplayer:2.19.1")
-    implementation("com.razorpay:checkout:1.6.20")
+    implementation("com.razorpay:checkout:1.6.40")
     implementation("com.github.dhaval2404:imagepicker:2.1")
     implementation("com.google.android.material:material:1.12.0")
     implementation("com.github.transferwise:sequence-layout:1.2.0")

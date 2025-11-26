@@ -172,7 +172,7 @@ fun getAddressList(userId: String, activity: Activity, callback: (AddressOutputM
     }
 
     fun setDefaultAddress(userId: String, addressId: String, activity: Activity, callback: (Boolean) -> Unit) {
-        val url = ConstantData.SERVER_ADDRESS + ConstantData.ADDRESS_GET_DEFAULT
+        val url = ConstantData.SERVER_ADDRESS + ConstantData.ADDRESS_SET_DEFAULT
         val req = object : StringRequest(Method.POST, url,
             { res -> callback(true) },
             { callback(false) }

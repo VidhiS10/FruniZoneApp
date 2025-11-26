@@ -27,6 +27,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class AddressFragment : Fragment() {
+    private var userDefaultAddress = ""
     private lateinit var tvName: TextView
     private lateinit var tvHome: TextView
     private lateinit var tvDefault: TextView
@@ -59,10 +60,16 @@ class AddressFragment : Fragment() {
 
 // ➤ OPEN AddressFragment
         btnCont.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.main, PaymentFragment())
-                .addToBackStack(null)
-                .commit()
+
+            val intent = Intent(requireContext(), PaymentActivity::class.java)
+
+            intent.putExtra("ADDRESS", userDefaultAddress)
+            intent.putExtra("ITEM_AMOUNT", requireActivity().intent.getStringExtra("ITEM_AMOUNT"))
+            intent.putExtra("GST", requireActivity().intent.getStringExtra("GST"))
+            intent.putExtra("TOTAL_AMOUNT", requireActivity().intent.getStringExtra("TOTAL_AMOUNT"))
+            intent.putExtra("COUPON", requireActivity().intent.getStringExtra("COUPON"))
+
+            startActivity(intent)
         }
 
         val back = view.findViewById<ImageView>(R.id.ivBack)
@@ -93,7 +100,7 @@ class AddressFragment : Fragment() {
             requireContext().getSharedPreferences(ConstantData.SP_LOGIN_PREFS, Context.MODE_PRIVATE)
         val userId = sp.getString(ConstantData.KEY_ID, "") ?: ""
 
-        Toast.makeText(requireContext(), "User $userId", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(requireContext(), "User $userId", Toast.LENGTH_SHORT).show()
 
         loadAddress(userId)
     }
@@ -110,6 +117,7 @@ class AddressFragment : Fragment() {
                 return@getDefaultAddress
             }
 
+
             val a = output.addresses!![0]
 
             tvName.text = a.full_name
@@ -118,6 +126,10 @@ class AddressFragment : Fragment() {
             tvAddress.text =
                 "${a.house_no}, ${a.area}, ${a.landmark}, ${a.city}, ${a.state} - ${a.pincode}"
             tvMobile.text = a.phone
+
+            userDefaultAddress =
+                "${a.full_name}\n${a.phone}\n${a.house_no}, ${a.area}, ${a.landmark}, ${a.city}, ${a.state} - ${a.pincode}"
+
         }
     }
 

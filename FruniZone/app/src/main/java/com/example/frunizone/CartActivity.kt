@@ -27,7 +27,7 @@ import org.json.JSONException
 import org.json.JSONObject
 
 //class CartActivity : AppCompatActivity() {
-class CartActivity : AppCompatActivity(), PaymentResultListener {
+class CartActivity : AppCompatActivity(){
     private lateinit var prod_total_amount: TextView
     private lateinit var prod_gst: TextView
     private lateinit var prod_amount: TextView
@@ -98,13 +98,10 @@ class CartActivity : AppCompatActivity(), PaymentResultListener {
                 CouponApi().getCouponDiscount(this, code)
             }
         }
-//
 //        back.setOnClickListener {
 //            startActivity(Intent(this, HomeActivity::class.java))
 //        }
-
-        openDialog()
-
+//        openDialog()
 //        btnContinue.setOnClickListener {
 //            bottomSheetDialog.show()
 //        }
@@ -198,38 +195,38 @@ class CartActivity : AppCompatActivity(), PaymentResultListener {
    }
 
 
-    private fun openDialog() {
-        bottomSheetDialog = BottomSheetDialog(this)
-        val view = layoutInflater.inflate(R.layout.layout_address, null)
-
-        Address1 = view.findViewById(R.id.etAddress1)
-        Address2 = view.findViewById(R.id.etAddress2)
-        pincode = view.findViewById(R.id.pincode)
-        btnConfirm = view.findViewById(R.id.btnConfirm)
-
-       /* btnConfirm.setOnClickListener {
-            val ad1 = Address1.text.toString().trim()
-            val ad2 = Address2.text.toString().trim()
-            val pin = pincode.text.toString().trim()
-
-            when {
-                ad1.isEmpty() -> Toast.makeText(this, "Please enter", Toast.LENGTH_SHORT).show()
-                ad2.isEmpty() -> Toast.makeText(this, "Please enter", Toast.LENGTH_SHORT).show()
-                pin.isEmpty() -> Toast.makeText(this, "Please enter", Toast.LENGTH_SHORT).show()
-                else -> {
-                    Address = ad1 + ad2 + pin
-
-                   /* if (RadioCOD.isChecked) {
-                        OrderApi().confirmOrder(uid, Address, "1", this)
-                    } else {
-                        makePayment()
-                    }*/
-                }
-            }
-        }*/
-
-        bottomSheetDialog.setContentView(view)
-    }
+//    private fun openDialog() {
+//        bottomSheetDialog = BottomSheetDialog(this)
+//        val view = layoutInflater.inflate(R.layout.layout_address, null)
+//
+//        Address1 = view.findViewById(R.id.etAddress1)
+//        Address2 = view.findViewById(R.id.etAddress2)
+//        pincode = view.findViewById(R.id.pincode)
+//        btnConfirm = view.findViewById(R.id.btnConfirm)
+//
+//       /* btnConfirm.setOnClickListener {
+//            val ad1 = Address1.text.toString().trim()
+//            val ad2 = Address2.text.toString().trim()
+//            val pin = pincode.text.toString().trim()
+//
+//            when {
+//                ad1.isEmpty() -> Toast.makeText(this, "Please enter", Toast.LENGTH_SHORT).show()
+//                ad2.isEmpty() -> Toast.makeText(this, "Please enter", Toast.LENGTH_SHORT).show()
+//                pin.isEmpty() -> Toast.makeText(this, "Please enter", Toast.LENGTH_SHORT).show()
+//                else -> {
+//                    Address = ad1 + ad2 + pin
+//
+//                   /* if (RadioCOD.isChecked) {
+//                        OrderApi().confirmOrder(uid, Address, "1", this)
+//                    } else {
+//                        makePayment()
+//                    }*/
+//                }
+//            }
+//        }*/
+//
+//        bottomSheetDialog.setContentView(view)
+//    }
 
     public fun setCart(orderModel: OrderOutputModel) {
         if (orderModel.order.isEmpty()) {
@@ -281,39 +278,39 @@ class CartActivity : AppCompatActivity(), PaymentResultListener {
             OrderApi().getOrderPending(uid, this)
         }
     }
+//
+//    override fun onPaymentSuccess(s: String?) {
+//        OrderApi().confirmOrder(uid, Address, "2", this)
+//    }
 
-    override fun onPaymentSuccess(s: String?) {
-        OrderApi().confirmOrder(uid, Address, "2", this)
-    }
+//    override fun onPaymentError(i: Int, s: String?) {
+//        Toast.makeText(this, "Payment error", Toast.LENGTH_SHORT).show()
+//    }
 
-    override fun onPaymentError(i: Int, s: String?) {
-        Toast.makeText(this, "Payment error", Toast.LENGTH_SHORT).show()
-    }
+//    private fun makePayment() {
+//        val amount = Math.round(tot.toFloat() * 100)
+//
+//        val checkout = Checkout()
+//        checkout.setKeyID("rzp_test_NE1WFCw0DgsblV")
+//        checkout.setImage(R.drawable.logo_landscape)
+//
+//        val obj = JSONObject()
+//        try {
+//            obj.put("name", "FURNIZONE")
+//            obj.put("description", "Test payment")
+//            obj.put("theme.color", "")
+//            obj.put("currency", "INR")
+//            obj.put("amount", amount)
+//            obj.put("prefill.contact", "9157140988")
+//            obj.put("prefill.email", "sahildharani890@gmail.com")
+//
+//            checkout.open(this, obj)
+//        } catch (e: JSONException) {
+//            e.printStackTrace()
+//        }
+//    }
 
-    private fun makePayment() {
-        val amount = Math.round(tot.toFloat() * 100)
-
-        val checkout = Checkout()
-        checkout.setKeyID("rzp_test_NE1WFCw0DgsblV")
-        checkout.setImage(R.mipmap.logo1)
-
-        val obj = JSONObject()
-        try {
-            obj.put("name", "FURNIZONE")
-            obj.put("description", "Test payment")
-            obj.put("theme.color", "")
-            obj.put("currency", "INR")
-            obj.put("amount", amount)
-            obj.put("prefill.contact", "9157140988")
-            obj.put("prefill.email", "sahildharani890@gmail.com")
-
-            checkout.open(this, obj)
-        } catch (e: JSONException) {
-            e.printStackTrace()
-        }
-    }
-
-    fun done() {
-        startActivity(Intent(this, HurrayActivity::class.java))
-    }
+//    fun done() {
+//        startActivity(Intent(this, HurrayActivity::class.java))
+//    }
 }

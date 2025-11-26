@@ -215,7 +215,12 @@ class AddAddressFragment : Fragment() {
         AddressApi().addAddress(model, requireActivity()) { success ->
             if (success) {
                 Toast.makeText(requireContext(), "Address Saved Successfully!", Toast.LENGTH_SHORT).show()
-                requireActivity().onBackPressed()
+//                (activity as? AddressActivity)?.openFragmentAds(SelectAddressFragment())
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.main, SelectAddressFragment())
+                    .addToBackStack(null)
+                    .commit()
+
             } else {
                 Toast.makeText(requireContext(), "Failed to save address!", Toast.LENGTH_SHORT).show()
             }

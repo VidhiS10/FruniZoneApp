@@ -18,6 +18,7 @@ import com.example.frunizone.util.ConstantData
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.widget.ImageView
 
 import android.widget.Toast
 
@@ -73,7 +74,14 @@ class SubCategoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val furnitureModel = arguments?.getSerializable("product") as FurnitureModel
+        val back = view.findViewById<ImageView>(R.id.ivBack)
+        val title = view.findViewById<TextView>(R.id.tvTitle)
 
+        title.text = "Product Details"
+
+        back.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
         subCategorySlider = view.findViewById(R.id.sub_category_slider)
         subColor = view.findViewById(R.id.sub_color)
         subName = view.findViewById(R.id.sub_name)

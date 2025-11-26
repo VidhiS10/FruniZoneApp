@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import com.example.frunizone.adapter.FurnitureAdapter1
 import com.example.frunizone.api.FurnitureApi
@@ -58,6 +60,14 @@ class AllProductFragment : Fragment() {
             val intent = Intent(requireActivity(), HomeActivity::class.java)
             startActivity(intent)
         }*/
+        val back = view.findViewById<ImageView>(R.id.ivBack)
+        val title = view.findViewById<TextView>(R.id.tvTitle)
+
+        title.text = "Products"
+
+        back.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
 
         FurnitureApi().getFurnitureAll(this)
     }

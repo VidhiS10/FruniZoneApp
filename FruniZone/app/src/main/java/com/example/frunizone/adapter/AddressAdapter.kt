@@ -42,6 +42,10 @@ class AddressAdapter(
 
         h.address.text = "${a.house_no}, ${a.area}, ${a.landmark}, ${a.city} - ${a.pincode}"
 
+        //  Set default selected from API/database
+        if (selectedId.isEmpty() && a.is_default == "1") {
+            selectedId = a.id ?: ""
+        }
         h.radio.isChecked = (a.id == selectedId)
 
         h.radio.setOnClickListener {
