@@ -110,6 +110,143 @@ class AddressApi {
 //    queue.add(request)
 //}
 //
+fun getAddressList(userId: String, activity: Activity, callback: (AddressOutputModel?) -> Unit) {
+
+    val url = ConstantData.SERVER_ADDRESS + ConstantData.ADDRESS_GET
+    val queue = Volley.newRequestQueue(activity)
+
+    val request = object : StringRequest(
+        Method.POST, url,
+        { response ->
+            val output = Gson().fromJson(response, AddressOutputModel::class.java)
+            callback(output)
+        },
+        { error ->
+            callback(null)
+        }
+    ) {
+        override fun getParams(): Map<String, String> {
+            return hashMapOf("user_id" to userId)
+        }
+    }
+
+    queue.add(request)
+}
+    fun deleteAddress(addressId: String, activity: Activity, callback: (Boolean) -> Unit) {
+        val url = ConstantData.SERVER_ADDRESS + ConstantData.ADDRESS_DELETE
+        val req = object : StringRequest(Method.POST, url,
+            { res -> callback(true) },
+            { callback(false) }
+        ) {
+            override fun getParams() = mapOf("id" to addressId)
+        }
+        Volley.newRequestQueue(activity).add(req)
+    }
+    fun updateAddress(model: AddressModel, activity: Activity, callback:(Boolean)->Unit){
+        val url = ConstantData.SERVER_ADDRESS + ConstantData.ADDRESS_UPDATE
+
+        val req = object : StringRequest(Method.POST,url,
+            { response ->
+                val obj = JSONObject(response)
+                callback(obj.getBoolean("status"))   // now correctly checks
+            },
+            { callback(false) }
+        ){
+            override fun getParams(): MutableMap<String, String> {
+                return hashMapOf(
+                    "id" to model.id.toString(),           // <- must send correct ID
+                    "full_name" to model.full_name!!,
+                    "phone" to model.phone!!,
+                    "house_no" to model.house_no!!,
+                    "area" to model.area!!,
+                    "landmark" to model.landmark!!,
+                    "city" to model.city!!,
+                    "state" to model.state!!,
+                    "pincode" to model.pincode!!,
+                    "address_type" to model.address_type!!,
+                    "is_default" to model.is_default.toString()
+                )
+            }
+        }
+        Volley.newRequestQueue(activity).add(req)
+    }
+
+    fun setDefaultAddress(userId: String, addressId: String, activity: Activity, callback: (Boolean) -> Unit) {
+        val url = ConstantData.SERVER_ADDRESS + ConstantData.ADDRESS_GET_DEFAULT
+        val req = object : StringRequest(Method.POST, url,
+            { res -> callback(true) },
+            { callback(false) }
+        ) {
+            override fun getParams() = mapOf("user_id" to userId, "id" to addressId)
+        }
+        Volley.newRequestQueue(activity).add(req)
+    }
+
+
+//    fun deleteAddress(addressId:String, activity:Activity, callback:(Boolean)->Unit){
+//
+//        val url = ConstantData.SERVER_ADDRESS + "address_delete.php"
+//        val queue = Volley.newRequestQueue(activity)
+//
+//        val req = object : StringRequest(Method.POST,url,
+//            { res ->
+//                val obj = JSONObject(res)
+//                callback(obj.getBoolean("status"))
+//            },
+//            { callback(false) }
+//        ){
+//            override fun getParams(): MutableMap<String, String> {
+//                return hashMapOf("id" to addressId)
+//            }
+//        }
+//        queue.add(req)
+//    }
+//    fun setDefaultAddress(userId:String, addressId:String, activity:Activity, callback:(Boolean)->Unit){
+//
+//        val url = ConstantData.SERVER_ADDRESS + "address_set_default.php"
+//        val queue = Volley.newRequestQueue(activity)
+//
+//        val req = object : StringRequest(Method.POST,url,
+//            { res ->
+//                val obj = JSONObject(res)
+//                callback(obj.getBoolean("status"))
+//            },
+//            { callback(false) }
+//        ){
+//            override fun getParams(): MutableMap<String, String> {
+//                return hashMapOf(
+//                    "user_id" to userId,
+//                    "id" to addressId
+//                )
+//            }
+//        }
+//        queue.add(req)
+//    }
+
+    fun getSingleAddress(addressId: String, activity: Activity, callback: (AddressOutputModel?) -> Unit) {
+
+        val url = ConstantData.SERVER_ADDRESS + ConstantData.ADDRESS_GET_SINGLE
+        val queue = Volley.newRequestQueue(activity)
+
+        val req = object : StringRequest(Method.POST, url,
+            { res ->
+                val output = Gson().fromJson(res, AddressOutputModel::class.java)
+                callback(output)
+            },
+            {
+                callback(null)
+            }
+        ) {
+            override fun getParams(): Map<String, String> {
+                val map = HashMap<String, String>()
+                map["id"] = addressId
+                return map
+            }
+        }
+
+        queue.add(req)
+    }
+
 
     fun getDefaultAddress(
         userId: String,

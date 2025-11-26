@@ -41,6 +41,9 @@ class PaymentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Activate "Address" step
+        (requireActivity() as? AddressActivity)?.updateSteps(3)
         val back = view.findViewById<ImageView>(R.id.ivBack)
         val title = view.findViewById<TextView>(R.id.tvTitle)
 
@@ -49,7 +52,6 @@ class PaymentFragment : Fragment() {
         back.setOnClickListener {
             requireActivity().onBackPressed()
         }
-        (requireActivity() as? CartActivity)?.updateSteps(3)
     }
     companion object {
         /**

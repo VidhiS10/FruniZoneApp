@@ -3,7 +3,7 @@ package com.example.frunizone.model
 import java.io.Serializable
 
 data class AddressModel(
-    var address_id: String? = null,
+    var id: String? = null,
     var user_id: String? = null,
     var full_name: String? = null,
     var phone: String? = null,

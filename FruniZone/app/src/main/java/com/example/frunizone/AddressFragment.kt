@@ -54,6 +54,16 @@ class AddressFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val btnCont = view.findViewById<Button>(R.id.btnContinue)
+
+
+// ➤ OPEN AddressFragment
+        btnCont.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.main, PaymentFragment())
+                .addToBackStack(null)
+                .commit()
+        }
 
         val back = view.findViewById<ImageView>(R.id.ivBack)
         val title = view.findViewById<TextView>(R.id.tvTitle)
