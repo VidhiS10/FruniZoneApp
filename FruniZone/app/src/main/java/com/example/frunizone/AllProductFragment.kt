@@ -63,7 +63,7 @@ class AllProductFragment : Fragment() {
         val back = view.findViewById<ImageView>(R.id.ivBack)
         val title = view.findViewById<TextView>(R.id.tvTitle)
 
-        title.text = "Products"
+        title.text = "All Products"
 
         back.setOnClickListener {
             requireActivity().onBackPressed()

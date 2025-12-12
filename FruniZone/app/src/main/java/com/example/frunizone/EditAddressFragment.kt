@@ -49,8 +49,9 @@ class EditAddressFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         addressId = arguments?.getString("id")
-        Toast.makeText(requireContext(), addressId, Toast.LENGTH_SHORT).show()
+//        Toast.makeText(requireContext(), addressId, Toast.LENGTH_SHORT).show()
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -99,7 +100,7 @@ class EditAddressFragment : Fragment() {
         AddressApi().getSingleAddress(addressId!!, requireActivity()) { output ->
 
             if (output == null || output.addresses.isNullOrEmpty()) {
-                Toast.makeText(requireContext(), "No data", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(requireContext(), "No data", Toast.LENGTH_SHORT).show()
                 return@getSingleAddress
             }
 
@@ -132,7 +133,7 @@ class EditAddressFragment : Fragment() {
     private fun updateNow(){
 
         if(addressId.isNullOrEmpty()){
-            Toast.makeText(requireContext(),"Missing ID",Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),"Missing ID while Updating",Toast.LENGTH_SHORT).show()
             return
         }
         val isDefault = if (chkDefault.isChecked) "1" else "0"
@@ -158,7 +159,7 @@ class EditAddressFragment : Fragment() {
 
         AddressApi().updateAddress(model,requireActivity()){ ok ->
             if(ok){
-                Toast.makeText(requireContext(),"Updated!",Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),"Updated Address!",Toast.LENGTH_SHORT).show()
                 parentFragmentManager.beginTransaction()
                     .replace(R.id.main, SelectAddressFragment())
                     .addToBackStack(null)

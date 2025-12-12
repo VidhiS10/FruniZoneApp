@@ -44,7 +44,7 @@ class FAQFragment : Fragment() {
         val back = view.findViewById<ImageView>(R.id.ivBack)
         val title = view.findViewById<TextView>(R.id.tvTitle)
 
-        title.text = "FQA"
+        title.text = "FAQ"
 
         back.setOnClickListener {
             requireActivity().onBackPressed()

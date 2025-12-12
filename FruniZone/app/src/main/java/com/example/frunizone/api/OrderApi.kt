@@ -35,7 +35,7 @@ class OrderApi {
             { response ->
                 progress.dismiss()
                 val output = Gson().fromJson(response, OrderOutputModel::class.java)
-                Toast.makeText(activity, output.message, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, output.message, Toast.LENGTH_SHORT).show()
             },
             { error ->
                 progress.dismiss()
@@ -77,7 +77,7 @@ class OrderApi {
             { response ->
                 progress.dismiss()
                 val output = Gson().fromJson(response, OrderOutputModel::class.java)
-                Toast.makeText(activity, output.message, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, output.message, Toast.LENGTH_SHORT).show()
 
                 if (output.status) {
                     (activity as CartActivity).getCartData()
@@ -110,7 +110,7 @@ class OrderApi {
             { response ->
                 progress.dismiss()
                 val output = Gson().fromJson(response, OrderOutputModel::class.java)
-                Toast.makeText(activity, output.message, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, output.message, Toast.LENGTH_SHORT).show()
 
                 if (output.status) {
                     val intent = Intent(activity, HomeActivity::class.java)
@@ -184,7 +184,7 @@ class OrderApi {
             { response ->
                 progress.dismiss()
                 val output = Gson().fromJson(response, OrderOutputModel::class.java)
-                Toast.makeText(activity, output.message, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, output.message, Toast.LENGTH_SHORT).show()
 
                 if (output.status) {
                     activity.startActivity(Intent(activity, HurrayActivity::class.java))
@@ -226,7 +226,7 @@ class OrderApi {
                 if (output.status) {
                     (activity as CartActivity).getCartData()
                 }
-                Toast.makeText(activity, output.message, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, output.message, Toast.LENGTH_SHORT).show()
             },
             { error ->
                 progress.dismiss()
@@ -297,7 +297,7 @@ class OrderApi {
                 progress.dismiss()
                 val output = Gson().fromJson(response, OrderOutputModel::class.java)
 
-                Toast.makeText(activity, output.message, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, output.message, Toast.LENGTH_SHORT).show()
 
                 if (output.status) {
                     fragment.getOrderHistory(output)

@@ -48,6 +48,7 @@ class CartActivity : AppCompatActivity(){
     private lateinit var Address1: EditText
     private lateinit var Address2: EditText
     private lateinit var pincode: EditText
+    private var orderList = ArrayList<OrderModel>()
 
     private lateinit var bottomSheetDialog: BottomSheetDialog
 
@@ -106,6 +107,14 @@ class CartActivity : AppCompatActivity(){
 //            bottomSheetDialog.show()
 //        }
         btnContinue.setOnClickListener {
+            for (item in orderList) {
+                OrderApi().updateOrder(
+                    item.id,
+                    item.quantity,
+                    prod_total_amount.text.toString(),
+                    this@CartActivity
+                )
+            }
 
             val intent = Intent(this, AddressActivity::class.java)
 
@@ -267,6 +276,7 @@ class CartActivity : AppCompatActivity(){
                 },
                 this
             )
+            orderList = orderModel.order
 
             rcyl_cart.layoutManager = LinearLayoutManager(this)
             rcyl_cart.adapter = adapter

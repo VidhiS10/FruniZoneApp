@@ -15,6 +15,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.frunizone.api.AddressApi
 import com.example.frunizone.util.ConstantData
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,7 +58,17 @@ class AddressFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val btnCont = view.findViewById<Button>(R.id.btnContinue)
+        val tvEstimatedDelivery = view.findViewById<TextView>(R.id.tvEstimatedDelivery)
+        val today = LocalDate.now()
 
+        // Add 7 days (change to 8 if you want 20/12/2025)
+        val deliveryDate = today.plusDays(7)
+
+        // Format date (dd/MM/yyyy)
+        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+        val formattedDate = deliveryDate.format(formatter)
+
+        tvEstimatedDelivery.text = formattedDate
 
 // ➤ OPEN AddressFragment
         btnCont.setOnClickListener {

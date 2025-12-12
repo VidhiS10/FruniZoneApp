@@ -133,7 +133,7 @@ class PaymentActivity : AppCompatActivity(), PaymentResultListener {
             val uid = getSharedPreferences(ConstantData.SP_LOGIN_PREFS, MODE_PRIVATE)
                 .getString(ConstantData.KEY_ID, "0")!!
 
-            OrderApi().confirmOrder(uid, address, "1", this)
+            OrderApi().confirmOrder(uid, address, "2", this)
             startActivity(Intent(this, HurrayActivity::class.java))
         }
 

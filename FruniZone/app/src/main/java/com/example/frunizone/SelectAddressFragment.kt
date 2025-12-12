@@ -60,18 +60,20 @@ class SelectAddressFragment : Fragment() {
 
 //  OPEN AddAddressFragment
         btnAdd.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.main, AddAddressFragment())
-                .addToBackStack(null)
-                .commit()
+//            parentFragmentManager.beginTransaction()
+//                .replace(R.id.main, AddAddressFragment())
+//                .addToBackStack(null)
+//                .commit()
+            (activity as? AddressActivity)?.openFragmentAds(AddAddressFragment())
         }
 
 //  OPEN AddressFragment
         btnConfirm.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.main, AddressFragment())
-                .addToBackStack(null)
-                .commit()
+//            parentFragmentManager.beginTransaction()
+//                .replace(R.id.main, AddressFragment())
+//                .addToBackStack(null)
+//                .commit()
+            (activity as? AddressActivity)?.openFragmentAds(AddressFragment())
         }
         val back = view.findViewById<ImageView>(R.id.ivBack)
         val title = view.findViewById<TextView>(R.id.tvTitle)
