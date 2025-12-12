@@ -122,7 +122,7 @@ class CartActivity : AppCompatActivity(){
             intent.putExtra("GST", prod_gst.text.toString())
             intent.putExtra("ITEM_AMOUNT", prod_amount.text.toString())
 
-            intent.putExtra("Coupen", tvcopoun.text.toString())
+            intent.putExtra("Coupon", tvcopoun.text.toString())
 
 
 

@@ -79,7 +79,7 @@ class AddressFragment : Fragment() {
             intent.putExtra("ITEM_AMOUNT", requireActivity().intent.getStringExtra("ITEM_AMOUNT"))
             intent.putExtra("GST", requireActivity().intent.getStringExtra("GST"))
             intent.putExtra("TOTAL_AMOUNT", requireActivity().intent.getStringExtra("TOTAL_AMOUNT"))
-            intent.putExtra("COUPON", requireActivity().intent.getStringExtra("COUPON"))
+            intent.putExtra("Coupon", requireActivity().intent.getStringExtra("Coupon"))
 
             startActivity(intent)
         }

@@ -36,7 +36,7 @@ class PaymentActivity : AppCompatActivity(), PaymentResultListener {
         amount = intent.getStringExtra("ITEM_AMOUNT") ?: "0"
         gst = intent.getStringExtra("GST") ?: "0"
         total = intent.getStringExtra("TOTAL_AMOUNT") ?: "0"
-        coupon = intent.getStringExtra("COUPON") ?: "0"
+        coupon = intent.getStringExtra("Coupon") ?: "0"
         address = intent.getStringExtra("ADDRESS") ?: ""
 
         val rbCOD = findViewById<RadioButton>(R.id.rbCOD)
